@@ -36,6 +36,17 @@ if __name__ == "__main__":
                     [-0.7071,    0.7071, 1],
                     [0.7071,    -0.7071, 1],
                     [-0.7071,    -0.7071, 1]]);
+    # hyperplanes = np.mat(
+    #     [[-1,0,0,0,0],
+    #     [0,-1,0,0,0],
+    #     [0,0,-1,0,0],
+    #     [0,0,0,-1,0],
+    #     [-1.6,-7.2,-3.7,-0.1,-51],
+    #     [-3.5,-2.1,-3.2,-0.15,-48],
+    #     [-0.1,-7.1,-2.9,-0.1,-202],
+    #     [-2.3,-3.2,-3.4,-0.15,-120],
+    #     [-6.1,-0.1,-4.9,-0.1,-229]]
+    # )
 
 
     #number of hyperplanes in this problem
@@ -43,9 +54,11 @@ if __name__ == "__main__":
 
     #the optimization function c:
     c = np.mat([2, 1]).T;
+    # c = np.mat([75.,128.,70.,34.]).T
 
     #pick a starting point (this can be done autonomously but we'll do it by hand)
     x = np.mat([0, 0]).T;
+    # x = np.mat([10, 10,50,60]).T;
 
     #now draw the constraining hyperplanes
     DrawHyperplanes(hyperplanes);
@@ -53,6 +66,11 @@ if __name__ == "__main__":
     #let's break down the data into variables we are familiar with
     a = hyperplanes[:][:,0:2].T; # each column is the "a" part of a hyperplane
     b = hyperplanes[:,2]; # each row is the "b" part of a hyperplane (only one element in each row)
+
+    # a = hyperplanes[:][:,0:4].T; # each column is the "a" part of a hyperplane
+    # b = hyperplanes[:,4]; # each row is the "b" part of a hyperplane (only one element in each row)
+    # print a.shape
+    # print b.shape
 
     #plot the starting point
     plt.plot(x[0,0],x[1,0], 'gx');
@@ -103,7 +121,7 @@ if __name__ == "__main__":
             #check if we've reached the Newton's method stopping condition
             #if so, break out of Newton's method
             if( lambda2/2 <= newton_epsilon ): ###YOUR CODE HERE###
-                print "lambda2: ",lambda2
+                # print "lambda2: ",lambda2
                 break;
     
             #now we have a direction to move the point x (i.e. the Newton step) but we don't 
@@ -170,6 +188,7 @@ if __name__ == "__main__":
 
     ###############End outer loop (Barrier Method)#####################
 
+    # print "The optimal point: (%f, %f, %f, %f)\n"%(x[0,0], x[1,0], x[2,0], x[3,0]);
     print "The optimal point: (%f, %f)\n"%(x[0,0], x[1,0]);
     print 'Total number of outer loop iterations: %d\n'%(num_outer_iterations)
 
