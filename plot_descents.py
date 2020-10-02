@@ -2,6 +2,7 @@ from math import exp
 import matplotlib.pyplot as plt
 def f(x):
     try:
+        # If x is iteratible, return result in list form
         y = []
         for i in x:
             y.append(exp(0.5*i+1)+exp(-0.5*i-0.5)+5*i)
@@ -10,6 +11,7 @@ def f(x):
     return y
 def d_f(x):
     try:
+        # If x is iteratible, return result in list form
         y = []
         for i in x:
             y.append(0.5*exp(0.5*i+1)-0.5*exp(-0.5*i-0.5)+5)
@@ -18,6 +20,7 @@ def d_f(x):
     return y
 def dd_f(x):
     try:
+        # If x is iteratible, return result in list form
         y = []
         for i in x:
             y.append(0.25*exp(0.5*i+1)+0.25*exp(-0.5*i-0.5))
