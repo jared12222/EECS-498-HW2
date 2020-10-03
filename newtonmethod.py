@@ -5,11 +5,13 @@ def NewtonMethod(f,d_f,dd_f,x0,epson = 0.0001):
     x = [x0]
 
     while True:
-        d_x = -d_f(x[-1])/dd_f(x[-1])
+        df = d_f(x[-1])
+        ddf = dd_f(x[-1])
+        if (df**2/ddf)/2 <= epson:
+            break
+        d_x = -df/ddf
         t = backtracking(f,d_f,x[-1],d_x)
         x.append(x[-1] + t*d_x)
-        if (d_f(x[-1])/dd_f(x[-1])*d_f(x[-1]))/2 <= epson:
-            break
     #     print "%3.3f,%.3f,%.3f" % (d_x,t,x[-1])
     # print "Final x: %.3f" % (x[-1])
     return x

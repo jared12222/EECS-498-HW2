@@ -6,6 +6,7 @@ def main():
     x = sgd(fi,fiprime,x0=-5,i_range = maxi,t=1,iteration = 1000)
     print "sgd complete"
     f = []
+    print "Plotting, may take a while"
     for n in x:
         f.append(fsum(n))
     

@@ -1,5 +1,6 @@
 from math import exp
 import matplotlib.pyplot as plt
+import numpy
 def f(x):
     try:
         # If x is iteratible, return result in list form
@@ -37,24 +38,29 @@ def main():
     y_new = f(x_new)
     x_gd  = GradientDescent(f,d_f,x0)
     y_gd  = f(x_gd)
-    print x_new
-    print x_gd
+    x = [ x for x in numpy.arange(-10,10,0.1)]
+    y = f(x)
+    print(x_new)
+    print(x_gd)
     # plt.subplot(211)
-    plt.plot(x_new,y_new,'rx-',label="Newton Method")
-    plt.plot(x_gd,y_gd,'mo--',label = "Gradient Descent")
+    plt.plot(x,y,'k',label="Objective")
+    plt.plot(x_new,y_new,'mx-',label="Newton Method")
+    plt.plot(x_gd,y_gd,'ro-',label = "Gradient Descent")
+    plt.legend()
     plt.xlabel('x')
     plt.ylabel('f(x)')
-    plt.legend()
-    plt.axis([-10,10,-10,10])
+    plt.xlim([-10,10])
     plt.title('Newton versus GD - x,f(x)')
+    plt.savefig("prob1d_i.png")
     plt.show()
     # plt.subplot(212)
-    plt.plot(y_new,'r',label="Newton")
-    plt.plot(y_gd,'m',label="Gradient Descent")
-    plt.xlabel('Number of Iterations')
+    plt.plot(y_new,'mx-',label="Newton",linewidth=3.0)
+    plt.plot(y_gd,'ro-',label="Gradient Descent")
+    plt.xlabel('Number of Iterations i')
     plt.ylabel('f(x)')
     plt.legend()
     plt.title('Newton versus GD - f(x_k)')
+    plt.savefig("prob1d_ii.png")
     plt.show()
 
 if  __name__ == "__main__":

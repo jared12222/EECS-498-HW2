@@ -12,10 +12,10 @@ def GradientDescent(f,d_f,x0,epson = 0.0001):
     while True:
         # determine d_x
         d_x = -d_f(x[-1])
+        if d_x**2 <= epson:
+            break
         t = backtracking(f,d_f,x[-1],d_x)
         x.append(x[-1] + t*d_x)
-        if d_f(x[-1])**2 <= epson:
-            break
     #     print "%3.3f,%.3f,%.3f" % (d_x,t,x[-1])
     # print "Final x: ",x[-1]
     return x

@@ -174,7 +174,7 @@ if __name__ == "__main__":
 
         #compute the duality gap (in terms of numplanes and t)
         duality_gap = numplanes/t###YOUR CODE HERE###
-        print "duality gap: ", duality_gap
+        # print "duality gap: ", duality_gap
 
         #If the duality gap is below our error tolerance (epsilon), we're done!
         if duality_gap < epsilon:
@@ -184,7 +184,7 @@ if __name__ == "__main__":
         #now that we've figured out the optimal point for this amount of optimization "force," increase the optimization force to a larger value
         #compute the new optimization force magnitude
         t = mu*t ###YOUR CODE HERE###
-        print "new t: %f" % (t)
+        # print "new t: %f" % (t)
 
     ###############End outer loop (Barrier Method)#####################
 

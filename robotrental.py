@@ -1,3 +1,4 @@
+import numpy
 from cvxopt import matrix, solvers
 
 def main():
